@@ -19,7 +19,7 @@ void displayingArray(int array[], int length) {
 int poisitionSmallestElement(int array[], int &length) {
     int smallestPosition = 0;
     
-    for (int i = 1; i < length; i++) {
+    for (int i = 1; i < length; i++){
         if (array[smallestPosition] > array[i]) {
             smallestPosition = i;
         }
@@ -127,7 +127,7 @@ int main() {
     displayingArray(array, length);
     std::cout << poisitionSmallestElement(array, length) << std::endl;
     std::cout << "the second largest element " << secondLargestElement(array, length) << std::endl;
-    std::cout << "the array contained duplicated element or not ?? " << isDuplicatedElementArray(array, length) << std::endl;
+    std::cout << "the array contained duplicated element or not ?? " << isDuplicatedElementArray(array, length) << std::endl; 
     insertElementToArray(array, length, 4, 0);
     displayingArray(array, length);
     deleteElementFromArray(array, length, 0);
