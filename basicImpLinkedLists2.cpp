@@ -42,6 +42,7 @@ class CircularLinkedlist {
         
         void append(int data) {
             if (start == NULL) unshilf(data);
+
             Node * newNode = (Node *)malloc(sizeof(Node));
             Node * ptrTraver = start;
 

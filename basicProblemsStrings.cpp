@@ -106,7 +106,7 @@ int positionSubString(char aString[], char subString[]) {
     while (aString[i] != '\0') {
         if (aString[i] == subString[j]) {
             int k = i;
-            while (subString[j] != "\0" && subString[j] == aString[k]) {
+            while (subString[j] != '\0' && subString[j] == aString[k]) {
                 k++;
                 j++;
             } 
@@ -122,14 +122,14 @@ int positionSubString(char aString[], char subString[]) {
     return -1;
 }
 
-void deleteString(char aString[], int &position, int &length) {
+void deleteString(char aString[], int &position, int length) {
     for (int i = position; i <  lengthOfString(aString) - length - 1; i++) {
         aString[i] = aString[position + length];
     }
 }
 
 void replacePatternToString(char aString[], char pattern[], char bySubString[]) {
-    int positionOfPattern = positionSubString(pattern);
+    int positionOfPattern = positionSubString(pattern, bySubString);
     deleteString(aString, positionOfPattern, lengthOfString(pattern));
     insertStrToStr(aString, bySubString, positionOfPattern);
 }
