@@ -5,59 +5,71 @@ const int queueMaxlength = 10;
 class Queue {
     private:
         int queue[queueMaxlength];
-        int length;
+        int front;
+        int rear;
 
     public:
         Queue() {
-            length = 0;
+            front = -1;
+            rear = -1;
         }
 
         void enqueue(int data);
         void dequeue();
-        int front();
         bool isEmpty();
         int lengthOf();
+        void traver();
 };
 
 void Queue::enqueue(int data) {
-    if (length >= queueMaxlength) return;
-    
-    queue[length] = data;
-    length++;
+    if (front == -1) front = 0;
+    if (rear + 1 >= queueMaxlength) return;
+    rear++;
+    queue[rear] = data;
 }
 
 void Queue::dequeue() {
-    if (length == 0) return;
+    if (this->isEmpty()) return;
 
-    for (int i = 0; i < length; i++) {
+    for (int i = front; i <= rear; i++) {
         queue[i] = queue[i + 1];
     }
-    length--;
-}
-
-int Queue::front() {
-    if (length == 0) return -1;
-    return queue[0];
+    front++;
 }
 
 bool Queue::isEmpty() {
-    return length;
+    if (rear == -1 && front == -1) return true;
+    return front > rear;
 }
 
 int Queue::lengthOf() {
-    return length;
+    if (rear == -1 && front == -1) return 0;
+    return rear - front + 1;
+}
+
+void Queue::traver() {
+    if (rear == -1 && front == -1) return;
+
+    for (int i = front; i <= rear; i++) {
+        std::cout << queue[i] << " ";
+    }
 }
 
 int main() {
     Queue queueOne;
+    std::cout << queueOne.isEmpty() << std::endl;
+
     queueOne.dequeue();
     queueOne.enqueue(1);
+    std::cout << queueOne.isEmpty() << std::endl;
     queueOne.enqueue(2);
-    queueOne.enqueue(3);
-    std::cout << queueOne.front() << ": front" << std::endl;
+    std::cout << queueOne.isEmpty() << std::endl;
     queueOne.dequeue();
-    std::cout << queueOne.front() << ": front" << std::endl;
+    queueOne.dequeue();
+    std::cout << queueOne.isEmpty() << std::endl;
+    queueOne.enqueue(3);
 
-
+    queueOne.traver();
+    std::cout << queueOne.lengthOf() << std::endl;
     return 0;
 }
