@@ -25,8 +25,8 @@ class BinaryTree {
         int totalNodes(Node * tree);
         int totalExternalNodes(Node * tree);
         int totalInternalNodes(Node * tree);
-        int height();
-        int deleteTree(Node * subTree);
+        int height(Node * tree);
+       void deleteTree(Node * subTree);
 };
 
 void BinaryTree::insert(int data) {
@@ -166,7 +166,7 @@ int BinaryTree::height(Node * tree) {
     }
 }
 
-Node * BinaryTree::deleteTree(Node * tree) {
+void BinaryTree::deleteTree(Node * tree) {
     if (tree != NULL) {
         deleteTree(tree -> left);
         deleteTree(tree -> right);
